@@ -1,0 +1,56 @@
+Lead Mobile AI Engineer & iOS UI/UX Architect.
+Task: Build a standalone, offline, Edge-AI powered native camera application using React Native (CLI). The app must NOT use any external APIs or web-views. All processing must happen on-device using the phone's GPU/NPU.
+
+TECH STACK REQUIRED:
+
+react-native-vision-camera (v4 for Frame Processors)
+
+react-native-reanimated (for buttery smooth UI and Frame Processor worklets)
+
+react-native-fast-tflite (for running local AI models)
+
+OpenCV (via Vision Camera frame processors for real-time color math)
+
+UI/UX REQUIREMENTS (THE "iPHONE CLONE"):
+The interface must look and feel EXACTLY like the native Apple iOS Camera app.
+
+Immersive Preview: Edge-to-edge camera view taking up the entire screen.
+
+Top Bar: Pure black semi-transparent header with Flash icon, Timer, and Settings gear.
+
+Bottom Control Deck: A pure black area containing:
+
+A horizontal swipeable Mode Carousel (RETRO | PHOTO | PORTRAIT). The active text should be Yellow (#FFD60A) and centered.
+
+The Shutter Button: A large, prominent white circle. When tapped, it should slightly compress (spring animation) and trigger a short haptic vibration.
+
+A thumbnail preview of the last taken photo on the bottom left.
+
+Animations: Use Framer Motion/Reanimated for smooth transitions between modes.
+
+CORE FEATURES & ARCHITECTURE:
+
+1. Mode: "RETRO" (Real-Time OpenCV Magic)
+
+Attach a Frame Processor to the Vision Camera.
+
+Apply real-time matrix transformations to the camera feed (lower the contrast slightly, add a warm yellow/blue tint, and introduce fake film grain).
+
+It must run at a smooth 30-60 FPS without dropping frames.
+
+2. Mode: "PHOTO" (Zero-DCE Enhancement)
+
+Real-time preview should be clean and standard.
+
+On Shutter Click: Capture the high-res photo. Pass the image buffer to a local TensorFlow Lite model (simulate a low-light enhancement model). Wait 1-2 seconds, show a loading spinner on the shutter, and output the dramatically brightened/enhanced image to the gallery.
+
+3. Mode: "PORTRAIT" (TFLite Segmentation & Dolly Zoom)
+
+On Shutter Click: Run a local TFLite Selfie Segmentation model to separate the person (foreground) from the background.
+
+Apply a heavy Gaussian blur to the background layer (DSLR effect).
+
+Bonus Dolly Zoom effect: Slightly scale up (zoom in) the background layer by 10% before merging it back with the person, creating a dramatic focal shift.
+
+INITIALIZATION COMMAND:
+Write the core App.tsx, the CameraScreen.tsx, and outline the Frame Processor hooks (useFrameProcessor). Make sure the UI layout is strictly iOS-styled and uses Reanimated for performance. DO NOT write dummy web code; write native module bindings.

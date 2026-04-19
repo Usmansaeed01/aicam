@@ -1,0 +1,12 @@
+{
+  "expo": {
+    "extra": {
+      "eas": {
+        "projectId": "74a8c89a-6a76-454c-942b-ec2d3125a904"
+      }
+    },
+    "android": {
+      "package": "ai.usman.camera"
+    }
+  }
+}

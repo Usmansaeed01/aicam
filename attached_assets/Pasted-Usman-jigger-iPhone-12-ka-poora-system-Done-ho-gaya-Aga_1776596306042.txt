@@ -1,0 +1,51 @@
+Usman jigger, iPhone 12 ka poora system? Done ho gaya! 🔥
+
+Agar humne iPhone 12 ko takkar deni hai, toh sirf blur aur bright karna kafi nahi. iPhone 12 apne software (A14 Bionic chip) ke zariye tasweeron ko process karta hai jise Apple "Deep Fusion" aur "Smart HDR 3" kehta hai.
+
+Iske ilawa hum isme iPhone 12 wale yeh hardcore features daalenge:
+
+Portrait Lighting (Studio, Contour, Stage Light): Sirf blur nahi, AI insaan ka chehra pehchan kar us par virtual light daalega aur background ko dark karega (Stage Light).
+
+Smart HDR (Deep Fusion Simulation): OpenCV ka ek formula hota hai CLAHE (Contrast Limited Adaptive Histogram Equalization). Yeh har tasweer ke textures (kapray, baal) ko extreme detail deta hai.
+
+Video / QuickTake: Shutter button ko daba kar rakhne se video record hogi.
+
+Pro UI Controls: Screen par 3x3 Grid, Exposure (brightness) kam/zyada karne wala slider, aur 0.5x, 1x, 2x ka zoom dial.
+
+Yeh raha tumhara "iPhone 12 Master Upgrade" prompt. Seedha Agent ke munh par thonko!
+
+📋 COPY-PASTE THIS TO REPLIT AGENT:
+Role: Senior iOS Camera Architect & React Native Engineer.
+Task: Upgrade the existing camera app to fully replicate the iPhone 12 native camera feature set and UI/UX. Do not break the existing TFLite setup.
+
+IMPLEMENT THESE iPHONE 12 FEATURES:
+
+1. Smart HDR 3 & Deep Fusion (OpenCV):
+
+In standard PHOTO mode, after capturing, pass the image through an OpenCV CLAHE (Contrast Limited Adaptive Histogram Equalization) filter before returning it. This will simulate Deep Fusion by bringing out extreme texture details and balancing highlights/shadows.
+
+2. Portrait Lighting Effects (TFLite Expansion):
+
+In PORTRAIT mode, add a secondary sub-carousel above the shutter for Lighting Effects: Natural, Studio, and Stage.
+
+Logic: Use the existing selfie_segmentation mask.
+
+Studio Light: Brighten the foreground (person) pixels by 15% and smooth skin slightly.
+
+Stage Light: Turn the entire background pitch black #000000 while keeping the person illuminated.
+
+3. QuickTake & Video Mode:
+
+Add VIDEO to the main mode carousel.
+
+Implement long-press on the PHOTO shutter button to instantly start recording a video (QuickTake). The button should turn Red and expand. Release to stop. Use react-native-vision-camera video recording capabilities.
+
+4. iPhone 12 Pro UI Elements:
+
+Zoom Dial: Add 0.5x, 1x, 2x circular buttons above the modes. Bind them to the Vision Camera zoom property (use digital zoom if ultra-wide lens is unavailable).
+
+Grid & Leveler: Add a subtle 3x3 white grid overlay.
+
+Tap to Focus & Exposure: When the user taps the screen, show the yellow focus square with a vertical sun slider next to it. Bind the slider to the camera's exposure property.
+
+Action: Write the updated code for CameraScreen.tsx, useTFLite.ts, and any OpenCV hooks. Reply with [DONE] when complete.

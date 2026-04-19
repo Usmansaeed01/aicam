@@ -1,0 +1,53 @@
+Usman jigger, tumne bilkul hacker master-mind wali baat ki hai! 🔥
+
+Kyunke humein pata hai ke aakhir mein yeh code PC par la kar EAS (Expo Application Services) se standalone APK banani hai, isliye Agent ko pehle hi batana hoga ke wo dependencies, animations, aur native modules ko bilkul waise set kare jaise ek production-ready app mein hote hain. Agar usne dependencies sahi nahi daalin, toh build udhar hi crash ho jayega.
+
+Aur haan, "Animations" ke bina iPhone ka maza kahan? Hum Agent ko explicitly react-native-reanimated use karne ka bolenge taake har click aur swipe par makhkhan jaisi (buttery smooth) spring animations aayein.
+
+Yeh raha tumhara "GOD-TIER FINAL PROMPT". Isme pehle wali saari cheezein, iPhone 12 ke naye features, animations, aur EAS dependencies sab ek hi pack mein hain. Seedha isko thonko!
+
+📋 COPY-PASTE THIS "GOD-TIER" MASTER PROMPT TO AGENT:
+Role: Lead Mobile AI Engineer & iOS UI/UX Architect.
+Context: We are building a standalone, Edge-AI native camera application. The final output will be built via EAS (Expo Application Services) as an Android APK, NOT run in Expo Go. You must prepare the architecture, dependencies, and animations for a native build.
+
+PHASE 1: DEPENDENCIES & EAS ARCHITECTURE (CRITICAL)
+Install and link the following packages immediately:
+
+react-native-vision-camera (v4/v5 for frame processors & video)
+
+react-native-worklets-core (Required for Vision Camera frame processors)
+
+react-native-fast-tflite (For local AI execution)
+
+react-native-reanimated (CRITICAL: Must be properly configured in babel.config.js for worklets and buttery smooth UI animations)
+
+expo-file-system, expo-image-manipulator, jpeg-js, buffer (For the Pixel Codec)
+
+PHASE 2: THE iPHONE 12 UI & ANIMATIONS
+The UI must be a pure clone of the iOS Camera app, featuring high-end animations:
+
+Immersive View: Edge-to-edge camera. Top bar (Flash, Timer) must be pure black semi-transparent.
+
+Animated Modes: Swipeable carousel (VIDEO | PHOTO | PORTRAIT). The active mode text must be Yellow. Use Reanimated to smoothly slide and snap the carousel.
+
+The Shutter Button: Must be a Reanimated Spring component. On press, it shrinks rapidly; on release, it bounces back. In VIDEO mode, long-pressing turns it into a Red recording square with a smooth morph animation.
+
+Pro UI: Add a 3x3 grid overlay. Add tap-to-focus with an animated yellow square and a vertical exposure slider. Add zoom dials (0.5x, 1x, 2x) that animate when tapped.
+
+PHASE 3: CORE AI & CAMERA FEATURES
+
+VIDEO: Direct 60FPS hardware recording using Vision Camera.
+
+PHOTO (Smart HDR 3 / Deep Fusion): Capture the photo. Use the Pixel Codec to pass it to the zero_dce.tflite model. After AI enhancement, apply an OpenCV-style CLAHE matrix (contrast/texture boost) before saving.
+
+PORTRAIT (Lighting & Dolly Zoom): Capture the photo, pass to selfie_segmentation.tflite.
+
+Add a sub-carousel above the shutter: Studio Light (brightens face), Stage Light (turns background pitch black), and Dolly Zoom (scales the background layer up by 10% and applies heavy Gaussian blur).
+
+PHASE 4: THE PIXEL CODEC & AUTO-DOWNLOADER
+
+Do not leave any // REPLACE THIS BLOCK stubs. Implement the full JPEG-to-Tensor (Float32Array) conversion in useTFLite.ts using jpeg-js and expo-image-manipulator.
+
+Write a Node script (scripts/download-models.js) to pull the selfie_segmentation and zero_dce models into assets/models/. Handle redirects for the Zero-DCE model (use Pinto's Model Zoo or Kaggle raw links).
+
+Execution: Setup the dependencies, write the complete animated UI, wire up the AI logic, and run the download script. Reply with [READY FOR EAS] when I can download the ZIP.
