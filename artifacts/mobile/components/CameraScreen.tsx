@@ -375,7 +375,6 @@ export default function CameraScreen() {
         audio={mode === "VIDEO"}
         zoom={zoomLevel}
         exposure={exposureValue}
-        //frameProcessor={retroFrameProcessor}
         pixelFormat="rgb"
       />
 
