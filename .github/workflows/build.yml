@@ -21,8 +21,13 @@ jobs:
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
-          # 🎯 HACKER FIX: Node 18 se 20 par move ho jao
           node-version: '20'
+
+      # 🎯 THE FINAL HACK: Metro bundler ko root par restrict karo
+      - name: 🧨 Matrix Fix (Bypass Metro Monorepo Bug)
+        run: |
+          mkdir -p ../../node_modules
+          rm -f ../../package.json ../../pnpm-workspace.yaml
 
       - name: 📦 Install Dependencies
         run: npm install
@@ -46,5 +51,4 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: AICam-Build
-          # 🎯 PATH DOUBLE CHECK: Path sahi hona chahiye
           path: artifacts/mobile/android/app/build/outputs/apk/release/app-release.apk
