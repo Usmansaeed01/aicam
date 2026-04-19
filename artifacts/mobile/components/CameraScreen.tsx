@@ -128,7 +128,7 @@ export default function CameraScreen() {
   }));
 
   // ── AI hooks ───────────────────────────────────────────────────────────────
-  const retroFrameProcessor = useRetroFrameProcessor(mode === "RETRO");
+  //const retroFrameProcessor = useRetroFrameProcessor(mode === "RETRO");
   const { runPhotoEnhancement, runPortraitSegmentation, loadingModel } = useTFLite();
 
   // ── Layout ─────────────────────────────────────────────────────────────────
@@ -375,7 +375,7 @@ export default function CameraScreen() {
         audio={mode === "VIDEO"}
         zoom={zoomLevel}
         exposure={exposureValue}
-        frameProcessor={retroFrameProcessor}
+        //frameProcessor={retroFrameProcessor}
         pixelFormat="rgb"
       />
 
