@@ -21,13 +21,13 @@ jobs:
       - name: ⚙️ Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          # 🎯 HACKER FIX: Node 18 se 20 par move ho jao
+          node-version: '20'
 
       - name: 📦 Install Dependencies
         run: npm install
 
       - name: 🏗️ Generate Native Code (Prebuild)
-        # 🎯 HACKER FIX: Added --no-install to prevent interactive prompt
         run: npx expo prebuild --platform android --clean --no-install
 
       - name: ☕ Setup Java 17
@@ -46,4 +46,5 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: AICam-Build
+          # 🎯 PATH DOUBLE CHECK: Path sahi hona chahiye
           path: artifacts/mobile/android/app/build/outputs/apk/release/app-release.apk
